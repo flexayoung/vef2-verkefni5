@@ -92,7 +92,7 @@ Verkefni sett fyrir í fyrirlestri fimmtudaginn 15. mars 2018.
 
 Skila skal undir „Verkefni og hlutaprófa“ á Uglu í seinasta lagi fyrir lok dags fimmtudaginn 5. apríl 2018.
 
-Skilaboð skulu innihalda slóð á GitHub repo fyrir verkefni, og dæmatímakennurum skal hafa verið boðið í repo ([sjá leiðbeiningar](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)). Notendanöfn þeirra eru `ernir` og `elvarhelga`.
+Skilaboð skulu innihalda slóð á GitHub repo fyrir verkefni, og dæmatímakennurum skal hafa verið boðið í repo ([sjá leiðbeiningar](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)). Notendanöfn þeirra eru `ernir`, `elvarhelga` og `osk`.
 
 Einnig skal skila slóð á uppsetningu á Heroku, t.d. `https://<appið-mitt>.herokuapp.com`.
 
