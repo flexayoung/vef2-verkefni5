@@ -9,12 +9,19 @@ import School from './components/school';
 import Navigation from './components/navigation';
 import NotFound from './components/not-found';
 
-class App extends Component {
-  render() {
+const baseurl = process.env.REACT_APP_SERVICE_URL;
 
+class App extends Component {
+  render() {    
     return (
       <main className="app">
-        <p>útfæra</p>
+        <h1>Próftöflur</h1>
+        < Navigation url={baseurl}/>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/:slug" component={School} />
+          <Route component={NotFound} />
+        </Switch>
       </main>
     );
   }
