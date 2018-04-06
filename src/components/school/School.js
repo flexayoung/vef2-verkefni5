@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
+import Helmet from 'react-helmet';
 
 import './School.css';
 import Department from '../department';
@@ -44,7 +45,7 @@ export default class School extends Component {
   }
   async componentWillReceiveProps(newProps) {
     this.props = newProps;
-    this.setState({ loading: true })    
+    this.setState({ loading: true })
     this.componentDidMount();
   }
 
@@ -71,6 +72,7 @@ export default class School extends Component {
 
     return (
       <section className="school">
+        <Helmet title={heading} />
         <h2>{heading}</h2>
         {
           departments.map((i) => {

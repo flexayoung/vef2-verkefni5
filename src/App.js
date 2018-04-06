@@ -15,6 +15,9 @@ class App extends Component {
   render() {    
     return (
       <main className="app">
+        <Helmet
+          defaultTitle="Próftöflur"
+          titleTemplate="%s - Próftöflur" />
         <h1>Próftöflur</h1>
         <Route component={Navigation} />
         <Switch>
