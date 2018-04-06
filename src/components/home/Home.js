@@ -10,11 +10,11 @@ const baseurl = process.env.REACT_APP_SERVICE_URL;
 export default class Home extends Component {
   state = {
     data: {
-      averageStudents: 0,
-      max: 0,
-      min: 0,
-      numStudents: 0,
-      numTests: 0,
+      averageStudents: PropTypes.number,
+      max: PropTypes.number,
+      min: PropTypes.number,
+      numStudents: PropTypes.number,
+      numTests: PropTypes.number,
     },
     loading: true,
     error: false,   

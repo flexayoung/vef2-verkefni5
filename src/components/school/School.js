@@ -18,9 +18,9 @@ const baseurl = process.env.REACT_APP_SERVICE_URL;
 
 export default class School extends Component {
   state = {
-    heading: '',
-    departments: [],
-    visible: null,
+    heading: PropTypes.string,
+    departments: PropTypes.array,
+    visible: PropTypes.bool,
     loading: true,
     error: false,
     isChanging: false,

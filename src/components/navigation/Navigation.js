@@ -8,8 +8,8 @@ const baseurl = process.env.REACT_APP_SERVICE_URL;
 /* hér ætti að sækja gögn frá vefþjónustu fyrir valmynd */
 export default class Navigation extends Component {
   state = {
-    data: null,
-    currentDep: null,
+    data: PropTypes.object,
+    currentDep: PropTypes.pathname,
     loading: true,
     error: false,
   };
