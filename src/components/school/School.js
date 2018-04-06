@@ -18,15 +18,19 @@ export default class School extends Component {
   state = {
     heading: '',
     departments: [],
-    visibleNote: null,
+    visible: null,
     loading: true,
     error: false,
   };
 
   onHeaderClick = (heading) => {
-    return (e) => {
-      const visibleNote = this.state.visibleNote === heading ? null : heading;
-      this.setState({ visibleNote });
+    return (e) => {      
+      console.log(this.state.visible);
+      console.log(heading);
+      
+      
+      const visible = this.state.visible === heading ? null : heading;
+      this.setState({ visible });
     }
   }
 
@@ -35,21 +39,6 @@ export default class School extends Component {
       const { slug } = this.props.match.params;
       const data = await this.fetchData(slug);
       this.setState({ heading: data.school.heading, departments: data.school.departments, loading: false });      
-      let schools = data.school.departments.map((i) => {
-        return(
-        <li key={i.heading}>
-        <Department 
-          title={i.heading}
-          tests={i.tests}
-          visible={this.state.visible === i.heading}
-          onHeaderClick={(this.onHeaderClick(i.heading))}
-          />
-        </li>
-      )
-        
-      });
-      this.setState({ schools });
-      
     } catch (e) {
       console.error('Error fetching data', e);
       this.setState({ error: true, loading: false })
@@ -64,7 +53,7 @@ export default class School extends Component {
   }
 
   render() {
-    const { heading, schools, loading, error } = this.state;
+    const { heading, departments, loading, error } = this.state;
 
     if (loading) {
       return (
@@ -78,12 +67,24 @@ export default class School extends Component {
     }
 
     return (
-      <nav className="school">
-      <h2>{heading}</h2>
+      <section className="school">
+        <h2>{heading}</h2>
         {
-          schools
+          departments.map((i) => {
+            return (
+              <li key={i.heading}>
+                <Department
+                  title={i.heading}
+                  tests={i.tests}
+                  visible={this.state.visible === i.heading}
+                  onHeaderClick={(this.onHeaderClick(i.heading))}
+                />
+              </li>
+            )
+        })
         }
-      </nav>
-    );
-  }
+      </section>
+    )}
+  
+    
 }

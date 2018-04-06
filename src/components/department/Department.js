@@ -25,27 +25,7 @@ export default class Department extends Component {
     onHeaderClick: () => { },
   }
 
-  // async componentDidMount() {
-  //   try {      
-  //     this.setState({ title: this.props.title, tests: this.props.tests, visible: this.props.visible, loading: false  })      
-      
-  //     let tests = this.props.tests.map((i) => {
-  //       return (
-  //         <tr>
-  //           <th>{i.course}</th>
-  //           <th>{i.name}</th>
-  //           <th>{i.students}</th>
-  //           <th>{i.date}</th>
-  //         </tr>
-  //       )})
-  //     this.setState({ tests })
-  //   } catch (e) {
-  //     console.error('Error fetching data', e);
-  //     this.setState({ error: true, loading: false })
-  //   }
-  // }
-
-  render() {
+  render() {    
     const { title, tests, visible, onHeaderClick, loading, error } = this.props;
     
     if (loading) {
@@ -58,27 +38,35 @@ export default class Department extends Component {
         <div>Villa að gögn</div>
       )
     }
-        console.log(this.state);
-
-    if(visible) {
+    
       return (
-        <nav className="department">
-        <h2>{title}</h2>
-          <table>
+        <div className="department">
+          <h3 onClick={onHeaderClick}>{title}</h3>
+          {visible && (<table>
             <thead>
-              <tdtr>Auðkenni</tdtr>
-              <td>Námskeið</td>
-              <td>Fjöldi</td>
-              <td>Dagsetning</td>
+              <tr>
+              <th>Auðkenni</th>
+              <th>Námskeið</th>
+              <th>Fjöldi</th>
+              <th>Dagsetning</th>
+              </tr>
             </thead>
             <tbody>
-              {tests}
+              {tests.map((i) => {
+                return(
+                  <tr>
+                    <td>{i.course}</td>
+                    <td>{i.name}</td>
+                    <td>{i.students}</td>
+                    <td>{i.date}</td>
+                  </tr>
+                )
+                
+              })}
             </tbody>
-          </table>
-        </nav>
+          </table>)}            
+        </div>
       );
-    }
 
-    return null;
   }
 }
