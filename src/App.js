@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <main className="app">
         <h1>Próftöflur</h1>
-        < Navigation url={baseurl}/>
+        <Route component={Navigation} />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/:slug" component={School} />

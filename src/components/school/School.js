@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 
 import './School.css';
 import Department from '../department';
@@ -21,28 +22,30 @@ export default class School extends Component {
     visible: null,
     loading: true,
     error: false,
+    isChanging: false,
   };
 
   onHeaderClick = (heading) => {
-    return (e) => {      
-      console.log(this.state.visible);
-      console.log(heading);
-      
-      
+    return (e) => {   
       const visible = this.state.visible === heading ? null : heading;
       this.setState({ visible });
     }
   }
 
-  async componentDidMount() {
-    try {      
+  async componentDidMount() {    
+    try {  
       const { slug } = this.props.match.params;
-      const data = await this.fetchData(slug);
+      const data = await this.fetchData(slug);      
       this.setState({ heading: data.school.heading, departments: data.school.departments, loading: false });      
     } catch (e) {
       console.error('Error fetching data', e);
       this.setState({ error: true, loading: false })
     }
+  }
+  async componentWillReceiveProps(newProps) {
+    this.props = newProps;
+    this.setState({ loading: true })    
+    this.componentDidMount();
   }
 
   async fetchData(slug) {
@@ -54,7 +57,7 @@ export default class School extends Component {
 
   render() {
     const { heading, departments, loading, error } = this.state;
-
+      
     if (loading) {
       return (
         <div>Sæki gögn</div>
@@ -72,7 +75,7 @@ export default class School extends Component {
         {
           departments.map((i) => {
             return (
-              <li key={i.heading}>
+              <li key={i.heading} className="list__dep">
                 <Department
                   title={i.heading}
                   tests={i.tests}
@@ -83,6 +86,7 @@ export default class School extends Component {
             )
         })
         }
+        <p className="nav__home"><Link to='/'>Heim</Link></p>
       </section>
     )}
   

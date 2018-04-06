@@ -1,1 +1,7 @@
-/* útfæra */
+.list__dep {
+    list-style: none;
+}
+
+.nav__home {
+    padding: 20px 0;
+}

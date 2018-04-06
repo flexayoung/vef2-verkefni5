@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
-import { fetchStats } from '../../actions/notes';
 import './Home.css';
 
 const baseurl = process.env.REACT_APP_SERVICE_URL;
@@ -26,7 +25,7 @@ export default class Home extends Component {
   async componentDidMount() {
     try {
       const data = await this.fetchData();
-      this.setState({ ...data.stats, loading: false });
+      this.setState({ data: data.stats, loading: false });
     } catch (e) {
       console.error('Error fetching data', e);
       this.setState({ error: true, loading: false }) 
@@ -61,24 +60,24 @@ export default class Home extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Fjöldi Prófa</td>
-              <td>{this.state.numTests}</td>
+              <td className="col__bold">Fjöldi Prófa</td>
+              <td>{data.numTests}</td>
             </tr>
             <tr>
-              <td>Fjöldi nemenda í öllum prófum</td>
-              <td>{this.state.numStudents}</td>
+              <td className="col__bold">Fjöldi nemenda í öllum prófum</td>
+              <td>{data.numStudents}</td>
             </tr>
             <tr>
-              <td>Meðalfjöldi nemenda í prófum</td>
-              <td>{this.state.averageStudents}</td>
+              <td className="col__bold">Meðalfjöldi nemenda í prófum</td>
+              <td>{data.averageStudents}</td>
             </tr>
             <tr>
-              <td>Minnsti fjöldi nemenda í prófum</td>
-              <td>{this.state.min}</td>
+              <td className="col__bold">Minnsti fjöldi nemenda í prófum</td>
+              <td>{data.min}</td>
             </tr>
             <tr>
-              <td>Mesti fjöldi nemenda í prófum</td>
-              <td>{this.state.max}</td>
+              <td className="col__bold">Mesti fjöldi nemenda í prófum</td>
+              <td>{data.max}</td>
             </tr>
           </tbody>
         </table>

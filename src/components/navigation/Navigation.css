@@ -1,1 +1,20 @@
-/* útfæra */
+.navigation {
+    margin: 2rem 0;
+}
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.navigation li {
+    display: inline;
+    margin: 0 30px;
+}
+
+.nav__link--bold {
+    font-weight: bold;
+}
+

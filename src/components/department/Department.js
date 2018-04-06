@@ -7,7 +7,6 @@ import './Department.css';
  * Þessi component ætti að vera einfaldur í birtingu en taka fall frá foreldri
  * sem keyrir þegar smellt er á fyrirsögn.
  */
-const baseurl = process.env.REACT_APP_SERVICE_URL;
 
 export default class Department extends Component {
 
@@ -41,30 +40,35 @@ export default class Department extends Component {
     
       return (
         <div className="department">
-          <h3 onClick={onHeaderClick}>{title}</h3>
-          {visible && (<table>
-            <thead>
-              <tr>
-              <th>Auðkenni</th>
-              <th>Námskeið</th>
-              <th>Fjöldi</th>
-              <th>Dagsetning</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tests.map((i) => {
-                return(
-                  <tr>
-                    <td>{i.course}</td>
-                    <td>{i.name}</td>
-                    <td>{i.students}</td>
-                    <td>{i.date}</td>
-                  </tr>
-                )
-                
-              })}
-            </tbody>
-          </table>)}            
+          {!visible && (<h3 onClick={onHeaderClick}>+ {title}</h3>)}
+          {visible && (
+           <div>
+           <h3 onClick={onHeaderClick}>- {title}</h3>
+            <table>
+              <thead>
+                <tr>
+                <th>Auðkenni</th>
+                <th>Námskeið</th>
+                <th>Fjöldi</th>
+                <th>Dagsetning</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tests.map((i) => {
+                  return(
+                    <tr>
+                      <td>{i.course}</td>
+                      <td>{i.name}</td>
+                      <td>{i.students}</td>
+                      <td>{i.date}</td>
+                    </tr>
+                  )
+                  
+                })}
+              </tbody>
+            </table>
+            </div>
+        )}            
         </div>
       );
 

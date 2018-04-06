@@ -1,3 +1,12 @@
-tr:nth-child(even) {
+.department {
+    padding: 30px 0;
+    border-bottom: solid 1px grey;
+}
+
+td, th {
+    padding: 5px;
+}
+
+.department tr:nth-child(even) {
     background-color: #f2f2f2;
 }

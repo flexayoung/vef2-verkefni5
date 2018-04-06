@@ -1,1 +1,7 @@
-/* útfæra */
+.col__bold {
+    font-weight: bold;
+}
+
+.home td {
+    padding-right: 6rem;
+}
